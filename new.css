@@ -1,0 +1,508 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #fff;
+}
+*::selection {
+  background-color: white;
+  color: #a015e1;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  /* perspective: 800px; */
+}
+body::-webkit-scrollbar {
+  display: block;
+  background-color: #040404;
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #a015e1;
+  border-radius: 20px;
+}
+.alert{
+    display: none;
+    margin: 0 auto;
+    /* background: url(https://imgs.search.brave.com/ZxeRrOke-FwUSaafA-fbGh7t392FhJvp1dDYMrw0VnU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzU4Lzk0Lzc5/LzM2MF9GXzU1ODk0/NzkzOV9YallWWHdX/dFZUam80YXhtaWtn/ZEo1N1NTRFBWUExK/My5qcGc); */
+    background: url(https://imgs.search.brave.com/DOiJVsbLjJdQFM_VEqb2FvGaZ1IJzY-SkRSI-wsNshc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/dmVjdGV1cnMtbGli/cmUvZXJyZXVyLWds/aXRjaC00MDQtZm9u/ZC1wYWdlXzIzLTIx/NDgwODM0NDYuanBn/P3NpemU9NjI2JmV4/dD1qcGc);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    padding: 3vw 4vw;
+    text-align: center;
+}
+#nav {
+  height: 120px;
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 100px;
+  gap: 40px;
+  position: fixed;
+  z-index: 11;
+}
+#nav img {
+  width: 150px;
+}
+#nav h4 {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+#insta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  position: fixed;
+  z-index: 11;
+  background-color: #a015e1;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+#insta a {
+  text-decoration: none;
+}
+
+#cursor {
+  height: 20px;
+  width: 20px;
+  background-color: #a015e1;
+  z-index: 100;
+  border-radius: 50%;
+  position: fixed;
+}
+#cursor-blur {
+  height: 470px;
+  width: 470px;
+  background-color: #af4caf68;
+  z-index: 9;
+  border-radius: 50%;
+  position: fixed;
+  filter: blur(45px);
+  transition: 0.7s;
+  /* transition: cubic-bezier(0.095, 0.82, 0.165, 1) 1s; */
+}
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /*it cover the whole size */
+  position: fixed;
+  z-index: -1;
+}
+/* Because nav and video ka position fixed h therefore the main overlaps nav and video
+so if the position fixed is applied to any class or id others can overlap on them
+*/
+#main {
+  /* main is already overlapped on the nav and video but it is at back but by using relative position prop to main it comes in front */
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  overflow: hidden;
+}
+
+#page1 {
+  height: 100vh; /*vh kyuki humne parent ko height di nhi hai vo 100% nahi chalega its like ki 0 ka 100% */
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 10;
+}
+#page1 h1 {
+  font-size: 100px;
+  font-weight: 900;
+  position: relative;
+  font-style: bold;
+}
+#page1 h2 {
+  text-transform: uppercase;
+}
+#page1 #arrow {
+  background-color: transparent;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid #a015e1;
+  position: absolute;
+  left: -1%;
+  bottom: 0%;
+  transition: all ease 0.4s;
+}
+#page1 #arrow i {
+  font-size: 50px;
+}
+#page1 #arrow:hover {
+  scale: 0.45;
+  background-color: #a015e1;
+}
+#page1 h1::before {
+  content: "EAT. SLEEP. CODE.";
+  position: absolute;
+  color: black;
+  top: -2px;
+  left: -2px;
+  z-index: -1;
+  -webkit-text-stroke: 1.5px #a015e1;
+}
+#page1 h2 {
+  font-size: 28px;
+  font-weight: 1200;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+#page1 p {
+  font-size: 15px;
+  width: 40%;
+  font-weight: 600;
+}
+#page2 {
+  min-height: 100vh; /*vh kyuki humne parent ko height di nhi hai vo 100% nahi chalega its like ki 0 ka 100% */
+  width: 100%;
+  z-index: 10;
+}
+#scroller {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 10;
+}
+#scroller::-webkit-scrollbar {
+  display: none;
+}
+#scroller-in {
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: scroller;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+#scroller h4 {
+  display: inline-block;
+  font-size: 100px;
+  font-weight: 1000;
+  margin-right: 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: black;
+  transition: all linear 0.3s;
+  -webkit-text-stroke: 2px #ffffff;
+}
+#scroller h4:hover {
+  color: #a015e1;
+  -webkit-text-stroke: 2px #a015e1;
+}
+@keyframes scroller {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+#about-us {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 50px;
+  height: 40vh;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  /* background-color: #a015e1; */
+}
+#about-us-in {
+  width: 48%;
+  text-align: center;
+}
+#about-us img {
+  height: 220px;
+  width: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+#about-us-in h3 {
+  font-size: 50px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+#about-us-in h5 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+}
+#page2 #sticker {
+  position: absolute;
+  height: 30vh;
+  width: 100%;
+}
+#page2 #sticker img {
+  height: 100%;
+  width: 15%;
+  object-fit: cover;
+}
+#cards-con {
+  display: flex;
+  /* background-color: #a015e1; */
+  height: 60vh;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  position: relative;
+  z-index: 10;
+}
+.card {
+  height: 75%;
+  width: 22%;
+  background-color: blue;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+#card3 {
+  background-image: url(/Assets/code7.jpg);
+}
+#card2 {
+  background-image: url(/Assets/code8.webp);
+}
+#card1 {
+  background-image: url(/Assets/code9.webp);
+}
+.overlay {
+  background-color: #a015e1;
+  padding: 30px;
+  height: 100%;
+  width: 100%;
+  padding-top: 50px;
+  opacity: 0;
+  transition: all ease 0.5s;
+  position: relative;
+  z-index: 10;
+}
+.overlay h4 {
+  color: black;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 15px;
+  /* white-space: nowrap; */
+}
+.overlay p {
+  color: black;
+  font-size: 15px;
+}
+.card:hover .overlay {
+  opacity: 1;
+  transform: none;
+}
+#green-img {
+  height: 30vh;
+  width: 100%;
+  background: linear-gradient(to left bottom, #5113c5, #a015e1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  padding: 30px 0;
+  filter: hue-rotate(300deg);
+  /* Adjust saturation to control the intensity of the colors */
+  filter: saturate(150%);
+}
+
+#green-img img {
+  height: 100%;
+  width: 15%;
+  object-fit: cover;
+}
+#green-img h4 {
+  width: 50%;
+  font-size: 25px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 50px;
+  color: black;
+  font-weight: 800;
+}
+#page3 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  position: relative;
+  /*isko position: diya hai kyuki iske ander k bache like img ko absolute dena tha to vo iske
+     wise left top etc se move hoga; */
+}
+#page3 p {
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  width: 55%;
+  font-weight: 900;
+  line-height: 45px;
+  position: relative;
+  z-index: 10;
+}
+#page3 img {
+  position: absolute;
+  height: 60px;
+}
+#page3 #colon-1 {
+  left: 5%;
+  top: 10%;
+}
+#page3 #colon-2 {
+  bottom: 15%;
+  right: 5%;
+}
+#page4 {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  overflow: hidden;
+  /* background-color: #ACE022; */
+}
+.elem {
+  height: 50%;
+  width: 25%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  z-index: 10;
+}
+.elem h4 {
+  height: 100%;
+  width: 100%;
+  background-color: #8b16ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 22px;
+  font-weight: 600;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 10;
+  transition: all ease 0.5s;
+}
+.elem img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all ease 0.5s;
+  scale: 1.1;
+}
+.elem:hover h4 {
+  color: white;
+  background: transparent;
+}
+.elem:hover img {
+  scale: 1;
+}
+#page4 h1 {
+  font-size: 75px;
+  -webkit-text-stroke: 2px white;
+  position: absolute;
+  top: 5%;
+  white-space: nowrap;
+  color: black;
+  font-weight: 800;
+  z-index: 10;
+  transition: all ease 0.5s;
+}
+#page4 h1:hover {
+  color: #ffffff;
+  -webkit-text-stroke: 2px #a015e1;
+}
+#page4 #sticker2 {
+  position: absolute;
+  height: 30vh;
+  width: 100%;
+  right: -90%;
+  top: -10%;
+}
+#page4 #sticker2 img {
+  height: 100%;
+  width: 15%;
+  object-fit: cover;
+}
+#footer {
+  height: 50vh;
+  width: 100%;
+  background: linear-gradient(to left bottom, #5113c5, #a015e1);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.foot i {
+  font-size: 25px;
+}
+.foot {
+  line-height: 1.5;
+}
+.foot img {
+  width: 200px;
+}
+.foot h3 {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+#mainfoot {
+  position: absolute;
+  bottom: 1%;
+  left: 5%;
+  padding-bottom: 20px;
+}
+#mainfoot p {
+  color: black;
+}
+#f1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+@media (max-width:1200px) {
+    .card{
+        height: 300px;
+    }
+}
+@media (max-width:750px) {
+    #main, video , #nav,  #cursor, #cursor-blur, #insta{
+    display: none; 
+   }
+   .alert{
+    display: block;
+    z-index: 999;
+   }
+}
